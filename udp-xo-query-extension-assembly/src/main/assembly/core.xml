@@ -1,0 +1,30 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+    <id>core</id>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>${resources.dir}/core</directory>
+            <outputDirectory>.</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>${project.groupId}:udp-xo-query-extension</include>
+                <include>org.springframework.boot:spring-boot-starter-web</include>
+                <include>com.sdl.delivery:udp-content-graphql</include>
+                <include>com.graphql-java:graphql-java</include>
+                <include>com.sdl.delivery:udp-content-graphql</include>
+            </includes>
+            <outputDirectory>.</outputDirectory>
+            <unpack>false</unpack>
+        </dependencySet>
+    </dependencySets>
+</assembly>

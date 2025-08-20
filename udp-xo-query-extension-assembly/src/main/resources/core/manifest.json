@@ -1,0 +1,40 @@
+{
+  "manifestVersion": "1.0",
+  "version": "${project.version}",
+  "id": "${project.artifactId}",
+  "name": "udp-xo-query-extension",
+  "description": "XO Query UDP Model extension",
+  "author": "RWS Group",
+  "extensions": [
+    {
+      "name": "udp-xo-query-model-transformer-extension",
+      "type": "CDModelTransformerExtension",
+      "supportedVersions": "12.2",
+      "properties": {
+        "entryPoint": "com.sdl.delivery.content.graphql.TransformerExtensionActivator",
+        "loadingPhase": "AFTER_APP_INITIALIZED",
+        "configurationSources": [
+          {
+            "name": "dxa-pagemodel-rawcontent-transformer",
+            "type": "json",
+            "properties": {
+              "fetcherClass": "com.sdl.delivery.content.model.core.datafetcher.PageRawContentDataFetcher",
+              "transformerClass": "com.sdl.delivery.dxa.modelservice.transformer.PageModelTransformer",
+              "priority": "1000"
+            }
+          },
+          {
+            "name": "dxa-entitymodel-rawcontent-transformer",
+            "type": "json",
+            "properties": {
+              "fetcherClass": "com.sdl.delivery.content.model.core.datafetcher.ComponentPresentationRawContentDataFetcher",
+              "transformerClass": "com.sdl.delivery.dxa.modelservice.transformer.EntityModelTransformer",
+              "priority": "1000"
+            }
+          }
+        ],
+        "capabilities": ["ContentServiceCapability"]
+      }
+    }
+  ]
+}
